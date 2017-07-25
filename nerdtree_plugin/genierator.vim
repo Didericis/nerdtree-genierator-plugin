@@ -25,4 +25,6 @@ function! NERDTreeGenierate()
   let name = input("Component Name: ", "rcc ")
 
   call system("cd " . treenode.path.str() . " && genierate " . name)
+
+  autocmd CursorHold,CursorHoldI * call NERDTreeFocus() | call g:NERDTree.ForCurrentTab().getRoot().refresh() | call g:NERDTree.ForCurrentTab().render() | wincmd w
 endfunction
