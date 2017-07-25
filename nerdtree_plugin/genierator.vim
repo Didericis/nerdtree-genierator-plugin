@@ -27,5 +27,5 @@ function! NERDTreeGenierate()
                         \ "", "rcc ")
   call system("cd " . treenode.path.str() . " && genierate " . genierate)
 
-  call treenode.refresh()
+  call g:NERDTree.ForCurrentTab().getRoot().refresh()
 endfunction
