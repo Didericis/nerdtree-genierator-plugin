@@ -28,5 +28,5 @@ function! NERDTreeGenierate()
 
   call NERDTreeFocus() 
   call g:NERDTree.ForCurrentTab().getRoot().refresh()
-  "call g:NERDTree.ForCurrentTab().render() 
+  call g:NERDTree.ForCurrentTab().render() 
 endfunction
