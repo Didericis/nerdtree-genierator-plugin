@@ -26,6 +26,6 @@ function! NERDTreeGenierate()
 
   call system("cd " . treenode.path.str() . " && genierate " . name)
 
-  call system("mkdir" . treenode.path.str() . "/asdf")
+  call system("mkdir " . treenode.path.str() . "/asdf")
   autocmd CursorHold,CursorHoldI * call NERDTreeFocus() | call g:NERDTree.ForCurrentTab().getRoot().refresh() | call g:NERDTree.ForCurrentTab().render() | wincmd w
 endfunction
