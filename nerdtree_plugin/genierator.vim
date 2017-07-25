@@ -22,10 +22,21 @@ call NERDTreeAddMenuItem({
 
 function! NERDTreeGenierate()
   let treenode = g:NERDTreeDirNode.GetSelected()
-  let genierate = input("Enter the template name, along with any arguments\n".
-                        \ "==========================================================\n".
-                        \ "", "rcc ")
-  call system("cd " . treenode.path.str() . " && genierate " . genierate)
+  let component = input("Component Name:", "rcc")
+  let filename = input("Filename:")
+  let vars = input("Vars:")
 
-  call g:NERDTree.ForCurrentTab().getRoot().refresh()
+  call system("cd " . treenode.path.str() . " && genierate " . component . " " . filename . " " . vars)
+
+  let filepath = treenode.path.str() . "/" . filename
+
+  let newTreeNode = g:NERDTreeFileNode.New(filepath, b:NERDTree)
+  if empty(treenode)
+    call b:NERDTree.root.refresh()
+    call b:NERDTree.render()
+  elseif treenode.isOpen || !empty(treenode.children)
+    call parentNode.addChild(newTreeNode, 1)
+    call NERDTreeRender()
+    call newTreeNode.putCursorHere(1, 0)
+  endif
 endfunction
