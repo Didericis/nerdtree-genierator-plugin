@@ -21,9 +21,10 @@ call NERDTreeAddMenuItem({
   \ })
 
 function! NERDTreeGenierate()
-  let curDirNode = g:NERDTreeDirNode.GetSelected()
-  let newNodeName = input("Enter the template name, along with any arguments\n".
+  let treenode = g:NERDTreeDirNode.GetSelected()
+  let genierate = input("Enter the template name, along with any arguments\n".
                         \ "==========================================================\n".
                         \ "", "rcc ")
   echo newNodeName
+  call system("cd " . treenode.path.str() . " && genierate " . genierate)
 endfunction
