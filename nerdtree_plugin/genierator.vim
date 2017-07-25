@@ -27,6 +27,6 @@ function! NERDTreeGenierate()
   call system("cd " . treenode.path.str() . " && genierate " . name)
 
   call NERDTreeFocus() 
-  "call g:NERDTree.ForCurrentTab().getRoot().refresh()
+  call g:NERDTree.ForCurrentTab().getRoot().refresh()
   "call g:NERDTree.ForCurrentTab().render() 
 endfunction
