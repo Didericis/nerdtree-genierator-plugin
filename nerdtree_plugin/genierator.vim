@@ -26,4 +26,6 @@ function! NERDTreeGenierate()
                         \ "==========================================================\n".
                         \ "", "rcc ")
   call system("cd " . treenode.path.str() . " && genierate " . genierate)
+
+  call b:NERDTree.root.refresh()
 endfunction
