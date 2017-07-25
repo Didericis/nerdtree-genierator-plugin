@@ -22,9 +22,9 @@ call NERDTreeAddMenuItem({
 
 function! NERDTreeGenierate()
   let treenode = g:NERDTreeDirNode.GetSelected()
-  let component = input("Component Name:", "rcc")
-  let filename = input("Filename:")
-  let vars = input("Vars:")
+  let component = input("Component Name: ", "rcc")
+  let filename = input("Filename: ")
+  let vars = input("Vars: ")
 
   call system("cd " . treenode.path.str() . " && genierate " . component . " " . filename . " " . vars)
 
@@ -35,7 +35,7 @@ function! NERDTreeGenierate()
     call b:NERDTree.root.refresh()
     call b:NERDTree.render()
   elseif treenode.isOpen || !empty(treenode.children)
-    call parentNode.addChild(newTreeNode, 1)
+    call treenode.addChild(newTreeNode, 1)
     call NERDTreeRender()
     call newTreeNode.putCursorHere(1, 0)
   endif
