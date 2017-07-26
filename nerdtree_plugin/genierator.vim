@@ -22,7 +22,7 @@ call NERDTreeAddMenuItem({
 
 function! NERDTreeGenierate()
   let treenode = g:NERDTreeDirNode.GetSelected()
-  let name = input("Genierate: ", "rcc ")
+  let name = input("Genierate: ", g:GenieratorDefault)
 
   call system("cd " . treenode.path.str() . " && genierate " . name)
 
